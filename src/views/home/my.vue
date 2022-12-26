@@ -1,14 +1,14 @@
 <template>
-  <app-content type="title" class="block-wrap" :hasNav="true">
+  <app-content type="search" class="block-wrap" :hasNav="true" :hasBack="false">
     <div class="block user-info margin-land margin-port padding-land padding-port">
       <pl-cell :span="[168,784]" align-items="flex-start">
         <div class="user-photo"></div>
         <div class="user-info">
           <div class="name-num">
-            <span class="name">{{userInfo.personName}}</span>
-            <span class="num padding-land">{{userInfo.actualPositionLevel}}</span>
+            <span class="name">张三</span>
+            <span class="num padding-land">一级警员</span>
           </div>
-          <div class="unit-name">{{userInfo.unitName}}</div>
+          <div class="unit-name">广州市公安局</div>
         </div>
       </pl-cell>
     </div>
@@ -188,7 +188,7 @@ async function handlerLogout() {
   .setting {
     position: absolute;
     left: 0;
-    bottom: 0;
+    .bottom(50);
     width: 100%;
     .height(145);
     .line-height(145);

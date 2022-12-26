@@ -10,7 +10,6 @@ import VConsole from 'vconsole'
 import appContent from './components/appContent.vue'
 import initRouterEvent from '@/utils/routerEvent.js'
 import appUpdate from '@/utils/update.js'
-import authConfig from '@/utils/authConfig.js'
 
 require('./iconfont/iconfont.js')
 
@@ -19,7 +18,6 @@ app.use(store)
 app.use(router)
 app.use(plMobile)
 app.use(directive)
-app.use(authConfig)
 app.component('app-content', appContent)
 app.mount("#app")
 

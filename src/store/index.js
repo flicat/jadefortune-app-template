@@ -5,7 +5,15 @@ import { on } from '@/utils/event'
 const store = createStore({
   state: {
     token: '',
-    userInfo: null
+    userInfo: null,
+    // 全局底部菜单
+    bottomNav: [
+      { path: '/unitDraw', name: '单位', icon: 'icon-danwei' },
+      { path: '/home', name: '民警', icon: 'icon-minjing' },
+      { path: '/positiveNegative', name: '正负面', icon: 'icon-zhengfumian' },
+      { path: '/dynamicInfo', name: '动态信息', icon: 'icon-dongtaixinxi' },
+      { path: '/drawSearch', name: '画像搜索', icon: 'icon-huaxiangsousuo' }
+    ]
   },
   mutations: {
     // 保存token

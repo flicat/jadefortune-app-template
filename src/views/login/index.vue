@@ -42,7 +42,7 @@ const authLoginHandler = async () => {
 
   setTimeout(() => {
     loadingTarget.login = false
-    router.replace({ path: '/welcome' })
+    router.replace({ path: '/home' })
   }, 1000)
 }
 </script>

@@ -43,7 +43,7 @@ const routes = [
     redirect: { path: '/home' },
     components: _import('layout/index'),
     children: [
-      { path: '/home', name: 'home', components: _import('home/my'), meta: { title: '我的' } },
+      { path: '/home', name: 'home', components: _import('home/my'), meta: { title: '个人中心' } },
     ],
     beforeEnter: [checkToken(true, next => next({ path: '/login' }))]
   },
