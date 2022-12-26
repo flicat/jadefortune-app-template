@@ -1,0 +1,230 @@
+/* 將字符串转换成日期对象
+ * @param {Date, String} dateStr
+ */
+export function getDateFromString(dateStr) {
+  let date = null
+
+  if (dateStr instanceof Date) {
+    date = new Date(dateStr)
+  } else if (/^(string|number)$/.test(typeof dateStr)) {
+    // 匹配日期
+    let matchDate = /(\d{4})([年/-])(\d{1,2})(月|\2)(\d{1,2})/.exec(dateStr)
+
+    if (matchDate) {
+      date = new Date([matchDate[1], matchDate[3], matchDate[5]].join('/'))
+
+      // 匹配时间
+      let matchTime = /\d{1,2}(:\d{1,2}){1,2}/.exec(dateStr)
+
+      if (!!date.getTime() && matchTime && matchTime[0]) {
+        date.setHours.apply(date, matchTime[0].split(':'))
+      }
+    } else {
+      if (/^\d+$/.test(dateStr)) {
+        dateStr -= 0
+      }
+      // 时间戳或其他格式
+      date = new Date(dateStr)
+    }
+  }
+
+  return String(date) === 'Invalid Date' ? null : date
+}
+
+/* 將日期对象转换成字符串
+ * @param {Date, timestamp} date
+ * @param {String} format
+ */
+export function getDateString(date, format = 'Y-M-D') {
+  date = getDateFromString(date)
+
+  if (!date) {
+    return ''
+  }
+
+  let padStr = function (str) {
+    return String(str).padStart(2, '0')
+  }
+
+  let weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+  let weeks2 = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+
+  if (date.toString() !== 'Invalid Date') {
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    let week = date.getDay()
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
+
+    return format.replace(/y+/ig, year)
+      .replace(/m+/g, month)
+      .replace(/d+/g, day)
+      .replace(/M+/g, padStr(month))
+      .replace(/D+/g, padStr(day))
+      .replace(/h+/g, hours)
+      .replace(/i+/g, minutes)
+      .replace(/s+/g, seconds)
+      .replace(/H+/g, padStr(hours))
+      .replace(/I+/g, padStr(minutes))
+      .replace(/S+/g, padStr(seconds))
+      .replace(/w+/g, weeks[week])
+      .replace(/W+/g, weeks2[week])
+  } else {
+    return ''
+  }
+}
+
+// 获取基于baseTime的n天后的日期，如果没有baseTime则默认今天之后的日期
+export function getRangeDate(day, format, baseTime) {
+  day = day | 0 || 0
+
+  let date
+  if (baseTime) {
+    date = getDateFromString(baseTime)
+  } else {
+    date = new Date()
+  }
+
+  date.setHours(0, 0, 0, 0)
+  date.setDate(date.getDate() + day)
+
+  if (format) {
+    return getDateString(date, format)
+  } else {
+    return date
+  }
+}
+
+
+// 获取基于baseTime的n月后的自然月日期，如果没有baseTime则默认今天之后的日期
+export function getRangeMonth(month, format, baseTime) {
+  month = month | 0 || 0
+
+  let diff = month > 0 ? -1 : 1
+
+  let date
+  if (baseTime) {
+    date = getDateFromString(baseTime)
+  } else {
+    date = new Date()
+  }
+
+  if (!date) {
+    return null
+  }
+
+  let endDate = new Date(date)
+  endDate.setMonth(date.getMonth() + month)
+
+  if (endDate.getDate() !== date.getDate()) {
+    endDate.setMonth(endDate.getMonth() - 1)
+    endDate.setDate(getMonthDays(endDate.getFullYear(), endDate.getMonth() + 1) + diff)
+  } else {
+    endDate.setDate(endDate.getDate() + diff)
+  }
+
+  if (format) {
+    return getDateString(endDate, format)
+  } else {
+    return endDate
+  }
+}
+
+// 获取一个月的天数
+export function getMonthDays(yy, mm) {
+  yy = Number(yy)
+  mm = Number(mm)
+  let getCheckYear = function (yy) {
+    return yy % 100 === 0 ? yy % 400 === 0 : yy % 4 === 0
+  }
+
+  if (getCheckYear(yy) && mm === 2) {
+    return 29
+  }
+
+  if (!getCheckYear(yy) && mm === 2) {
+    return 28
+  }
+
+  if (mm === 4 || mm === 6 || mm === 9 || mm === 11) {
+    return 30
+  }
+
+  return 31
+}
+
+/* 比较两个日期相差的天数 */
+export function getDayDiff(date1, date2) {
+  let _date1 = getDateFromString(date1)
+  let _date2 = getDateFromString(date2)
+
+  _date1.setHours(0, 0, 0, 0)
+  _date2.setHours(0, 0, 0, 0)
+
+  return Math.ceil((_date2 - _date1) / 86400000)
+}
+
+/* 比较两个日期相差的月份 */
+export function getMonthDiff(date1, date2) {
+  let _date1 = getDateFromString(date1)
+  let _date2 = getDateFromString(date2)
+
+  let year1 = _date1.getFullYear()
+  let month1 = _date1.getMonth()
+  let year2 = _date2.getFullYear()
+  let month2 = _date2.getMonth()
+
+  let diff
+  if (year1 === year2) {
+    diff = month2 - month1
+  } else {
+    diff = (year2 - year1) * 12 + month2 - month1
+  }
+
+  return diff
+}
+
+// 获取对象类型
+export function getType(target) {
+  return Object.prototype.toString.call(target).match(/\[object (\w+)\]/)[1].toLowerCase()
+}
+
+/* 类型判断 */
+export function is(target, ...type) {
+  let typeString = getType(target)
+  return type.indexOf(typeString) > -1
+}
+
+// promise包装
+export function promisify(func, content = null) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      func.call(content, ...args, () => resolve(...args), () => reject(...args))
+    })
+  }
+}
+
+
+/**
+ * 获取年份
+ * 当超过6月份（即7月1日，即默认为当年年份），否则返回去年
+ */
+export function getSearchYear() {
+  const date = new Date()
+  const year = date.getFullYear()
+  if (date.getMonth() < 6) {
+    return year - 1
+  } else {
+    return year
+  }
+}
+
+
+// 睡眠
+export async function sleep(time) {
+  return new Promise((res) => {
+    setTimeout(res, time)
+  })
+}

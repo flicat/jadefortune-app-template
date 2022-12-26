@@ -1,0 +1,303 @@
+@import "./mixin";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+body {
+  /* global */
+  --default: #BEC5CB;
+  --primary: #2d8cf0;
+  --success: #67c23a;
+  --warning: #e6a23c;
+  --danger: #f56c6c;
+
+  --primary-light: #5074FF;
+  --danger-light: #FA9191;
+
+  --default-text: #1E3259;
+  --info-text: #1D3456;
+  --primary-text: #757575;
+  --success-text: #3D7D11;
+  --warning-text: #DE5E05;
+  --error-text: #FF5555;
+
+  --overtime: #FFE7E7;
+  --progress: #CEF5CA;
+  --not-started: #FFEAC7;
+  --disabled: #E2E5F0;
+
+  --tag-bg: #9898B6;
+  --input-bg: #fff;
+
+  /* message */
+  --title-color: #333;
+  --content-color: #666;
+  --toast-text-color: #d6d6d6;
+
+  /* button */
+  --button-text-color: #fff;
+
+  /* canvas */
+  --canvas-bg: #ffffdc;
+  --canvas-placeholder: #ccc;
+
+  /* checkbox */
+  --checkbox-disabled-text: #c8c9cc;
+  --checkbox-disabled-border: #dcdfe6;
+  --checkbox-disabled-bg: #ebedf0;
+  --checkbox-text: #333;
+  --checkbox-bg: #dcdfe6;
+  --checkbox-toggle-color: #fff;
+  --checkbox-toggle-unchecked-bg: #e9e9e9;
+  --checkbox-toggle-checked-bg: #0179fd;
+  --checkbox-vertical-border: #f0f0f0;
+  --checkbox-button-border: #dcdfe6;
+  --checkbox-button-text: #fff;
+  --checkbox-button-disabled-bg: #ebebe4;
+  --checkbox-button-disabled-text: #999;
+
+  /* datetime */
+  --datetime-bg: #fff;
+  --week-bg: #ededed;
+  --datetime-disabled-text: #999;
+  --datetime-current-text: #fff;
+  --datetime-current-bg: #6db9e6;
+  --datetime-active-bg: #e7faff;
+  --datetime-button-top-border: #ededed;
+  --datetime-cancel-button-color: #fff;
+  --datetime-submit-button-color: #fff;
+  --datetime-cancel-button-bg: #6db9e6;
+  --datetime-submit-button-bg: #6db9e6;
+  --watch-bg: #eee;
+  --watch-result-color: #666;
+  --watch-result-bg: #e7fbff;
+  --watch-range-color: #fff5e7;
+  --watch-button-color: #666;
+  --watch-hour-pointer: #58d299;
+  --watch-minute-pointer: #58d299;
+  --watch-end-hour-pointer: #58bad2;
+  --watch-end-minute-pointer: #58bad2;
+
+  /* to-top */
+  --to-top-text: #C1CEFF;
+
+  /* list */
+  --list-refresh-tip: #ccc;
+
+  /* loading */
+  --loading-text: #999;
+
+  /* picker */
+  --picker-text: #333;
+  --picker-bg: #fff;
+  --picker-btn-cancle: #bec5cb;
+  --picker-btn-submit: #3388FF;
+  --picker-border: #ebedf0;
+
+  /* progress */
+  --progress-inner: #EBEDFB;
+  --progress-bar: #3388FF;
+  --progress-text: #333;
+
+  /* radio */
+  --radio-text: #333;
+  --radio-disabled-text: #c8c9cc;
+  --radio-button-text: #fff;
+  --radio-button-border: #dcdfe6;
+  --radio-button-disabled-text: #999;
+  --radio-button-disabled-bg: #ebebe4;
+  --radio-vertical-border: #f0f0f0;
+
+  /* range */
+  --range-bar: #EBEDFB;
+  --range-progress: #5074FF;
+  --range-thumb: #fff;
+  --range-text: #999;
+  --range-disabled-bg: #c0c2cc;
+
+  /* select */
+  --select-color: #fff;
+  --select-popup-color: #333;
+  --select-popup-bg: #fff;
+  --select-popup-border: #ebedf0;
+
+  /* steps */
+  --steps-toggle-text: #9898B6;
+  --steps-line: #F2F3F5;
+  --steps-icon: #DCDEE0;
+
+  /* tab */
+  --tab-card-border: #e4e7ed;
+  --tab-card-disabled-bg: #f6f6f6;
+  --tab-button-active-text: #fff;
+  --tab-border: #EFF2F5;
+
+  /* upload */
+  --upload-del-text: #ccc;
+  --upload-add-button: #EBEDFB;
+}
+
+html {
+  font-size: 3.75vw;
+  font-family: "HarmonyOS Sans SC", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
+  color: #868686;
+}
+
+html,
+body,
+#app,
+.box {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f5f6f8;
+}
+
+// 样式重置
+a {
+  color: @--color-primary;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: @--color-primary;
+    //text-decoration: underline;
+  }
+}
+
+pre,
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font-family: "HarmonyOS Sans SC";
+}
+
+// 路由动画
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 300ms ease;
+}
+
+.slide-right-enter {
+  transform: translateX(-100%);
+}
+
+.slide-left-enter {
+  transform: translateX(100%);
+}
+
+.slide-right-leave-active {
+  transform: translateX(100%);
+}
+
+.slide-left-leave-active {
+  transform: translateX(-100%);
+}
+
+.slide-right-leave-active,
+.slide-left-leave-active {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0 0 15px #ccc;
+}
+
+/* 布局
+-------------------------------*/
+.flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  >.flex-wrap {
+    flex: 1;
+    width: 100%;
+    position: relative;
+
+    >.flex-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+}
+
+/* 边距
+------------------------------ */
+.margin-port {
+  .margin-top(32);
+  .margin-bottom(32);
+}
+
+.padding-port {
+  .padding-top(32);
+  .padding-bottom(32);
+}
+
+.margin-land {
+  .margin-left(32);
+  .margin-right(32);
+}
+
+.padding-land {
+  .padding-left(32);
+  .padding-right(32);
+}
+
+/* 组件
+ ------------------*/
+.clearfix::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+// 暂无数据
+.pl-v-nodata {
+  position: relative;
+  .height(630);
+
+  &::before {
+    content: attr(data-nodata);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    .padding-top(340);
+    .width(400);
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    color: #c0c4cc;
+    text-align: center;
+    background: url('~@/assets/images/bg-nodata.png') no-repeat 50% 0;
+    background-size: 100%;
+  }
+}
+
+// loading
+.pl-loading-wrap {
+  position: relative;
+}

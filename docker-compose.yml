@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app-init:
+    image: flicat/cordova_11_android:v1
+    volumes:
+      - ./:/appDir
+    command: /bin/bash -c "source /etc/profile && cd /appDir && npm i && npm run build-prod && cordova platform add android@8.1.0 && cordova plugin add cordova-plugin-android-permissions@1.1.2 && cordova plugin add cordova-plugin-splashscreen@6.0.0 && cordova plugin add cordova-plugin-whitelist@1.3.5 && cordova plugin add cordova-hot-code-push-plugin@1.5.3"
+  app-build:
+    image: flicat/cordova_11_android:v1
+    volumes:
+      - ./:/appDir
+    command: /bin/bash -c "source /etc/profile && cd /appDir && cordova build android && npm run copy-app"

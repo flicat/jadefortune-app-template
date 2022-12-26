@@ -1,0 +1,160 @@
+@--color-primary: #0179fd;
+@--color-success: #67c23a;
+@--color-warning: #e6a23c;
+@--color-danger: #f56c6c;
+@--color-info: #909399;
+@--color-text-primary: #303133;
+
+/* 设计稿尺寸 */
+@psd-width: 1080;
+/* 基础字体大小 */
+@rem: (@psd-width / 320 * 12rem);
+
+/* px转rem方法 */
+.font-size (@size) {
+  font-size: (@size / @rem);
+}
+
+.letter-spacing (@size) {
+  letter-spacing: (@size / @rem);
+}
+
+.text-indent (@size) {
+  text-indent: (@size / @rem);
+}
+
+.width (@size) {
+  width: (@size / @rem);
+}
+
+.height (@size) {
+  height: (@size / @rem);
+}
+
+.min-width (@size) {
+  min-width: (@size / @rem);
+}
+
+.min-height (@size) {
+  min-height: (@size / @rem);
+}
+
+.max-width (@size) {
+  max-width: (@size / @rem);
+}
+
+.max-height (@size) {
+  max-height: (@size / @rem);
+}
+
+.padding (@top) {
+  padding: (@top / @rem);
+}
+
+.padding-bottom (@top) {
+  padding-bottom: (@top / @rem);
+}
+
+.padding-top (@top) {
+  padding-top: (@top / @rem);
+}
+
+.padding-right (@top) {
+  padding-right: (@top / @rem);
+}
+
+.padding-left (@top) {
+  padding-left: (@top / @rem);
+}
+
+.padding (@top, @right) {
+  padding: (@top / @rem) (@right / @rem);
+}
+
+.padding (@top, @right, @bottom) {
+  padding: (@top / @rem) (@right / @rem) (@bottom / @rem);
+}
+
+.padding (@top, @right, @bottom, @left) {
+  padding: (@top / @rem) (@right / @rem) (@bottom / @rem) (@left / @rem);
+}
+
+.margin (@top) {
+  margin: (@top / @rem);
+}
+
+.margin-bottom (@top) {
+  margin-bottom: (@top / @rem);
+}
+
+.margin-top (@top) {
+  margin-top: (@top / @rem);
+}
+
+.margin-right (@top) {
+  margin-right: (@top / @rem);
+}
+
+.margin-left (@top) {
+  margin-left: (@top / @rem);
+}
+
+.margin (@top, @right) {
+  margin: (@top / @rem) (@right / @rem);
+}
+
+.margin (@top, @right, @bottom) {
+  margin: (@top / @rem) (@right / @rem) (@bottom / @rem);
+}
+
+.margin (@top, @right, @bottom, @left) {
+  margin: (@top / @rem) (@right / @rem) (@bottom / @rem) (@left / @rem);
+}
+
+.background-size (@width: auto, @height: auto) {
+  background-size: (@width / @rem) (@height / @rem);
+}
+
+.top (@size) {
+  top: (@size / @rem);
+}
+
+.left (@size) {
+  left: (@size / @rem);
+}
+
+.right (@size) {
+  right: (@size / @rem);
+}
+
+.bottom (@size) {
+  bottom: (@size / @rem);
+}
+
+.line-height (@size) {
+  line-height: (@size / @rem);
+}
+
+.border-radius (@top) {
+  border-radius: (@top / @rem);
+}
+
+.border-radius (@top, @right) {
+  border-radius: (@top / @rem) (@right / @rem);
+}
+
+.border-radius (@top, @right, @bottom) {
+  border-radius: (@top / @rem) (@right / @rem) (@bottom / @rem);
+}
+
+.border-radius (@top, @right, @bottom, @left) {
+  border-radius: (@top / @rem) (@right / @rem) (@bottom / @rem) (@left / @rem);
+}
+
+.flex-basis (@size) {
+  flex-basis: (@size / @rem);
+}
+
+.grid-gap (@size) {
+  grid-gap: (@size / @rem);
+}
