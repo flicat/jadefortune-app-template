@@ -1,9 +1,8 @@
 {
   "name": "io.cordova.hellocordova",
   "displayName": "my_app",
-  "description": "Cordova APP",
-  "main": "index.js",
-  "version": "1.3.0",
+  "description": "jadefortune-app-template",
+  "version": "1.0.0",
   "private": true,
   "author": "liyuelong",
   "license": "Apache-2.0",
