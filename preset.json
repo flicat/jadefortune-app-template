@@ -1,0 +1,17 @@
+{
+  "useConfigFiles": true,
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-router": {
+      "historyMode": false
+    },
+    "@vue/cli-plugin-vuex": {},
+    "@vue/cli-plugin-eslint": {
+      "config": "prettier",
+      "lintOn": [
+        "save"
+      ]
+    }
+  },
+  "cssPreprocessor": "less"
+}
