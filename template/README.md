@@ -1,10 +1,16 @@
-## 打包部署
-###### 开发模式
+### cordova app 模板
+-------------
+#### 模板使用
+```
+vue create --preset flicat/jadefortune-app-template my-app-project
+```
+#### 打包部署
+##### 开发模式
 > ```
 > npm run dev-dev    #开发环境
 > npm run dev-test   #测试环境
 > ```
-###### 打包
+##### 打包
 > - 构建H5页面
 > ```
 > npm run build-dev    #开发环境
@@ -13,11 +19,11 @@
 > npm run build-prod   #生产环境
 > ```
 
-###### 部署
+##### 部署
 > - 打包的`app.apk`文件位于`www/app/`目录下
 > - 打包的热更新配置文件`chcp.json`和`chcp.manifest`位于`www`目录下
 > - www目录必须部署到线上可访问，作为APP热更新的请求地址
-## 关于热更新
+#### 关于热更新
 > - 热更新地址配置
 > ```
 > # config.xml
@@ -34,7 +40,7 @@
 > ```
 > - 热更新规则
 > 修改版本号之后，客户端提示下载更新
-> *注意：H5页面文件采用静默更新模式，不需要修改版本号，更新时没有提示*
+> **注意：H5页面文件采用静默更新模式，不需要修改版本号，更新时没有提示**
 > ```
 > # config.xml
 > <chcp>
@@ -47,10 +53,10 @@
 > "min_native_interface": 2,
 > }
 > ```
-> *注意：`<native-interface>`和`min_native_interface`版本号必须一致*
+> **注意：`<native-interface>`和`min_native_interface`版本号必须一致**
 > **注意：config.xml和cordova-hcp.json文件是自动生成的，如需修改，请修改cordovaConfig.js文件**
 
-## 使用 Docker 打包项目
+#### 使用 Docker 打包项目
 在用docker打包之前，先完成以下步骤
 ```
 # 安装npm依赖
@@ -67,8 +73,8 @@ docker-compose up app-init
 > docker-compose up app-build
 > ```
 
-## cordova app 相关环境配置
-##### 依赖环境：
+#### 附：cordova app 相关环境配置
+##### 环境依赖：
 > - `Java_jdk@1.8.0`
 > - `Nodejs@12.22.7`
 > - `android-sdk`
