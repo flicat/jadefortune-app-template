@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "check-version": "node checkVersion.js",
-    "serve": "vue-cli-service serve --port=5000",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "postbuild": "node cordovaConfig.js && cordova-hcp build",
     "dev-dev": "npm run check-version && cross-env PROJECT_ENV=dev npm run serve",
