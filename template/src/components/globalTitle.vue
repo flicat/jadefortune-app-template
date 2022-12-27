@@ -29,7 +29,6 @@
 import { computed, defineProps, inject, ref } from "vue"
 import { emit } from "@/utils/event"
 
-const store = inject('store')
 const route = inject('route')
 const router = inject('router')
 
