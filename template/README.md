@@ -1,9 +1,5 @@
-### cordova app 模板
+### cordova app
 -------------
-#### 模板使用
-```
-vue create --preset flicat/jadefortune-app-template my-app-project
-```
 #### 打包部署
 ##### 开发模式
 > ```
