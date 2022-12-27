@@ -24,7 +24,12 @@
   "dependencies": {
     "core-js": "^3.20.2",
     "pl-mobile2": "^1.2.14",
+    <%_ if(options.plugins.includes('vconsole')){ _%>
     "vconsole": "^3.11.0",
+    <%_ } _%>
+    <%_ if(options.plugins.includes('echarts')){ _%>
+    "echarts": "^5.2.2",
+    <%_ } _%>
     "vue": "^3.2.26",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"

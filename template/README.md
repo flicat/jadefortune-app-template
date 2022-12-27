@@ -19,6 +19,24 @@
 > - 打包的`app.apk`文件位于`www/app/`目录下
 > - 打包的热更新配置文件`chcp.json`和`chcp.manifest`位于`www`目录下
 > - www目录必须部署到线上可访问，作为APP热更新的请求地址
+
+#### 使用 Docker 打包 APP
+在用docker打包之前，先完成以下步骤
+```
+# 安装npm依赖
+npm install
+
+# 构建 HTML
+npm run build-prod
+
+# 初始化 Android APP 构建环境
+docker-compose up app-init
+```
+完成以上步骤后，后续就可以使用 docker-compose 构建APP了：
+> ```
+> docker-compose up app-build
+> ```
+
 #### 关于热更新
 > - 热更新地址配置
 > ```
@@ -51,23 +69,6 @@
 > ```
 > 注意：**`<native-interface>`和`min_native_interface`版本号必须一致**
 > 注意：**config.xml和cordova-hcp.json文件是自动生成的，如需修改，请修改cordovaConfig.js文件**
-
-#### 使用 Docker 打包项目
-在用docker打包之前，先完成以下步骤
-```
-# 安装npm依赖
-npm install
-
-# 构建 HTML
-npm run build-prod
-
-# 初始化 Android APP 构建环境
-docker-compose up app-init
-```
-完成以上步骤后，后续就可以使用 docker-compose 构建APP了：
-> ```
-> docker-compose up app-build
-> ```
 
 #### 附：cordova app 相关环境配置
 ##### 环境依赖：
