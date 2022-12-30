@@ -59,7 +59,7 @@ docker-compose up app-init
 > ```
 > - 热更新规则
 > 修改版本号之后，客户端提示下载更新
-> 注意：**H5页面文件采用静默更新模式，不需要修改版本号，更新时没有提示**
+> - **注意：H5页面文件采用静默更新模式，不需要修改版本号，更新时没有提示**
 > ```
 > # config.xml
 > <chcp>
@@ -72,8 +72,8 @@ docker-compose up app-init
 > "min_native_interface": 2,
 > }
 > ```
-> 注意：**`<native-interface>`和`min_native_interface`版本号必须一致**
-> 注意：**config.xml和cordova-hcp.json文件是自动生成的，如需修改，请修改cordovaConfig.js文件**
+> - **注意：`<native-interface>`和`min_native_interface`版本号必须一致**
+> - **注意：config.xml和cordova-hcp.json文件是自动生成的，如需修改，请修改cordovaConfig.js文件**
 
 #### 附：cordova app 相关环境配置
 ##### 环境依赖：
